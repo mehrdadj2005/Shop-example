@@ -53,10 +53,10 @@ input[type="search"]::-webkit-search-cancel-button {
   --foreground: oklch(0.13 0.028 261.692);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.13 0.028 261.692);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.13 0.028 261.692);
-  --primary: oklch(0.21 0.034 264.665);
-  --primary-foreground: oklch(0.985 0.002 247.839);
+  --popover: oklch(89.01% 0.020 84.59);
+  --popover-foreground: oklch(89.01% 0.020 84.59);
+  --primary: oklch(93.44% 0.010 87.47);
+  --primary-foreground: oklch(93.44% 0.010 87.47);
   --secondary: oklch(0.967 0.003 264.542);
   --secondary-foreground: oklch(0.21 0.034 264.665);
   --muted: oklch(0.967 0.003 264.542);
@@ -87,10 +87,10 @@ input[type="search"]::-webkit-search-cancel-button {
   --foreground: oklch(0.985 0.002 247.839);
   --card: oklch(0.21 0.034 264.665);
   --card-foreground: oklch(0.985 0.002 247.839);
-  --popover: oklch(0.21 0.034 264.665);
-  --popover-foreground: oklch(0.985 0.002 247.839);
-  --primary: oklch(0.928 0.006 264.531);
-  --primary-foreground: oklch(0.21 0.034 264.665);
+  --popover: oklch(89.01% 0.020 84.59);
+  --popover-foreground: oklch(89.01% 0.020 84.59);
+  --primary: oklch(93.44% 0.010 87.47);
+  --primary-foreground: oklch(93.44% 0.010 87.47);
   --secondary: oklch(0.278 0.033 256.848);
   --secondary-foreground: oklch(0.985 0.002 247.839);
   --muted: oklch(0.278 0.033 256.848);
@@ -115,6 +115,49 @@ input[type="search"]::-webkit-search-cancel-button {
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
+
+#bg-header-nav>button {
+  display: none
+}
+
+#bg-header-nav {
+  background-color: #ffffff00
+}
+
+.back-primary {
+  background: oklch(93.44% 0.010 87.47)
+}
+
+.back-popover {
+  background: oklch(89.01% 0.020 84.59)
+}
+
+.customCard {
+  transform: translateZ(-8px) rotateX(50deg) rotateZ(45deg);
+  transition: transform 0.9s;
+  transform-style: preserve-3d;
+  perspective: 800px;
+  cursor: pointer;
+}
+
+.customCard:hover {
+  animation: zoom-3d 0.9s forwards;
+}
+
+@keyframes zoom-3d {
+  0% {
+    transform: translateZ(-8px) rotateX(50deg) rotateZ(45deg);
+  }
+
+  50% {
+    transform: translateY(18px) rotateX(50deg) rotateZ(45deg)
+  }
+
+  100% {
+    transform: translateY(0px) rotateX(0deg) rotateZ(0deg)
+  }
+}
+
 
 @layer base {
   * {
