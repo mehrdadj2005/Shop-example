@@ -18,8 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fa" dir="rtl">
-      <body className={` antialiased`}>
+    <html lang="fa">
+      <body className={` antialiased bg-primary `}>
         <Header />
         {children}
       </body>
