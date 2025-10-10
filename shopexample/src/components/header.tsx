@@ -62,7 +62,7 @@ export default function Header() {
       >
         {/* top section*/}
         <div className="h-3/4 w-full flex items-center justify-center text-3xl font-bold bg-primary text-popover">
-          <Container className=" mt-12">
+          <Container className=" mt-12 px-4 lx:px-8 lx:py-0">
             {openMenu === "women" && (
               <div
                 className="flex w-full
@@ -124,7 +124,7 @@ export default function Header() {
                         style={{ backgroundImage: `url(${images?.left}) ` }}
                         className="w-full h-full bg-cover bg-no-repeat items-start justify-end flex flex-col rounded-2xl"
                       >
-                        <span className="text-base pl-4 mb-4 text-stone-100">
+                        <span className="text-lg pl-4 mb-4 text-stone-100">
                           WOOL CRUISER COLLECTION
                         </span>
                       </div>
@@ -139,7 +139,7 @@ export default function Header() {
                           style={{ backgroundImage: `url(${images?.top}) ` }}
                           className="rounded-2xl h-full bg-cover bg-no-repeat items-start justify-end flex flex-col"
                         >
-                          <span className="text-base pl-4 mb-4 text-stone-100">
+                          <span className="text-lg pl-4 mb-4 text-stone-100">
                             ALL NEW WATERPROOF COLLECTION
                           </span>
                         </div>
@@ -153,7 +153,7 @@ export default function Header() {
                           style={{ backgroundImage: `url(${images?.bottom}) ` }}
                           className="rounded-2xl h-full bg-cover bg-no-repeat items-start justify-end flex flex-col"
                         >
-                          <span className="text-base pl-4 mb-4 text-stone-100">
+                          <span className="text-lg pl-4 mb-4 text-stone-100">
                             OUR CUSHIEST SLIPPER EVER
                           </span>
                         </div>
@@ -224,7 +224,7 @@ export default function Header() {
                         style={{ backgroundImage: `url(${images?.left}) ` }}
                         className="w-full h-full bg-cover bg-no-repeat items-start justify-end flex flex-col rounded-2xl"
                       >
-                        <span className="text-base pl-4 mb-4 text-stone-100">
+                        <span className="text-lg pl-4 mb-4 text-stone-100">
                           WOOL CRUISER COLLECTION
                         </span>
                       </div>
@@ -239,7 +239,7 @@ export default function Header() {
                           style={{ backgroundImage: `url(${images?.top}) ` }}
                           className="rounded-2xl h-full bg-cover bg-no-repeat items-start justify-end flex flex-col"
                         >
-                          <span className="text-base pl-4 mb-4 text-stone-100">
+                          <span className="text-lg pl-4 mb-4 text-stone-100">
                             ALL NEW WATERPROOF COLLECTION
                           </span>
                         </div>
@@ -253,7 +253,7 @@ export default function Header() {
                           style={{ backgroundImage: `url(${images?.bottom}) ` }}
                           className="rounded-2xl h-full bg-cover bg-no-repeat items-start justify-end flex flex-col"
                         >
-                          <span className="text-base pl-4 mb-4 text-stone-100">
+                          <span className="text-lg pl-4 mb-4 text-stone-100">
                             OUR CUSHIEST SLIPPER EVER
                           </span>
                         </div>
