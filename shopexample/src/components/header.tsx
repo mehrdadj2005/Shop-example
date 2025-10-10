@@ -292,7 +292,7 @@ export default function Header() {
             <div id="nav" className="flex gap-4 w-1/3 justify-center">
               <Button
                 variant="ghost"
-                className={`relative z-50 hover:bg-stone-100 transition-all duration-350 ${
+                className={`relative z-50 text-stone-800 hover:bg-stone-100 transition-all duration-350 ${
                   openMenu == "men" ? "bg-stone-100" : "bg-none"
                 }`}
                 onMouseEnter={() => setOpenMenu("men")}
@@ -301,7 +301,7 @@ export default function Header() {
               </Button>
               <Button
                 variant="ghost"
-                className={`relative z-50 hover:bg-stone-100 transition-all duration-350 ${
+                className={`relative z-50 text-stone-800 hover:bg-stone-100 transition-all duration-350 ${
                   openMenu == "women" ? "bg-stone-100" : "bg-none"
                 }`}
                 onMouseEnter={() => setOpenMenu("women")}
