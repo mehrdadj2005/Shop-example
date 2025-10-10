@@ -1,103 +1,360 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
+import { Api } from "@/services/api";
+import { HeaderData } from "@/types/header";
 import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 import Container from "./container";
-
-const liClass =
-  "text-sm font-bold p-2 hover:border-b-3 border-red-500 transition-all duration-100 cursor-pointer pb-3 hover:p-2 text-sm ";
-
-const personOptionClass =
-  "flex items-center hover:bg-gray-100 px-2 rounded-2xl transition-all duration-300 cursor-pointer";
+import { Skeleton } from "./ui/skeleton";
 
 export default function Header() {
+  const [openMenu, setOpenMenu] = useState<"men" | "women" | null>(null);
+  const [showHeader, setShowHeader] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [skeleton, setSkeleton] = useState(true);
+  const info = Api<HeaderData>("header");
+
+  let items, logo, images;
+  if (info[0]) {
+    const { item } = info[0];
+    items = item.items;
+    logo = item.logo;
+    images = item.images;
+  }
+  console.log(items);
+  console.log(logo);
+  console.log(images);
+
+  // 🎯 کنترل نمایش/پنهان شدن هدر هنگام اسکرول
+  useEffect(() => {
+    const handleScroll = () => {
+      setOpenMenu(null);
+      if (window.scrollY > lastScrollY) {
+        setShowHeader(false);
+      } else setShowHeader(true);
+      setLastScrollY(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
+  useEffect(() => {
+    setSkeleton(true);
+
+    setTimeout(() => {
+      setSkeleton(false);
+    }, 500);
+  }, [openMenu]);
+
+  const isOpen = !!openMenu;
+
   return (
-    <div className="shadow-sm">
-      <Container>
-        <div className="flex items-center justify-between py-2">
-          <div className="flex items-center w-3/5">
-            <Image
-              src={"/images/logo.png"}
-              alt="logo"
-              width={200}
-              height={70}
-              className="cursor-pointer"
-            ></Image>
-            <div className="bg-gray-100 rounded-2xl p-1 flex w-full mr-4">
+    <>
+      {/* MENU */}
+      <div
+        className={`fixed top-0 left-0 right-0 h-screen transform origin-top transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] z-40  ${
+          isOpen
+            ? "scale-y-100 opacity-100"
+            : "scale-y-0 opacity-0 pointer-events-none"
+        }`}
+      >
+        {/* top section*/}
+        <div className="h-3/4 w-full flex items-center justify-center text-3xl font-bold bg-primary text-popover">
+          <Container className=" mt-12">
+            {openMenu === "women" && (
+              <div
+                className="flex w-full
+            "
+              >
+                <div className=" w-1/2 flex">
+                  <div className="flex flex-col text-stone-800  mr-16 gap-y-5">
+                    {items?.items1.map((item) =>
+                      skeleton ? (
+                        <Skeleton key={item} className="w-32 h-4 mb-4" />
+                      ) : (
+                        <Link
+                          href={"/"}
+                          key={item}
+                          className="text-base font-medium hover:underline cursor-pointer"
+                        >
+                          {item}
+                        </Link>
+                      )
+                    )}
+                  </div>
+                  <div className="flex flex-col [&>*:first-child]:text-stone-800  mr-16 gap-y-2">
+                    {items?.items2.map((item) =>
+                      skeleton ? (
+                        <Skeleton key={item} className="w-32 h-4 mb-4" />
+                      ) : (
+                        <Link
+                          href={"/"}
+                          key={item}
+                          className="text-stone-400 text-base font-medium hover:underline cursor-pointer"
+                        >
+                          {item}
+                        </Link>
+                      )
+                    )}
+                  </div>
+                  <div className="flex flex-col [&>*:first-child]:text-stone-800 mr-16 gap-y-2">
+                    {items?.items3.map((item) =>
+                      skeleton ? (
+                        <Skeleton key={item} className="w-32 h-4 mb-4" />
+                      ) : (
+                        <Link
+                          href={"/"}
+                          key={item}
+                          className="text-stone-400 text-base font-medium hover:underline cursor-pointer"
+                        >
+                          {item}
+                        </Link>
+                      )
+                    )}
+                  </div>
+                </div>
+                <div className="flex w-1/2 h-80 gap-8 justify-end">
+                  <div className="w-1/3 h-full bg-cover bg-no-repeat items-start justify-end flex flex-col customCard">
+                    {skeleton ? (
+                      <Skeleton className="h-full w-full rounded-xl absolute" />
+                    ) : (
+                      <div
+                        style={{ backgroundImage: `url(${images?.left}) ` }}
+                        className="w-full h-full bg-cover bg-no-repeat items-start justify-end flex flex-col rounded-2xl"
+                      >
+                        <span className="text-base pl-4 mb-4 text-stone-100">
+                          WOOL CRUISER COLLECTION
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="w-1/3 flex gap-2 flex-col">
+                    <div className="h-full bg-cover bg-no-repeat items-start justify-end flex flex-col customCard">
+                      {skeleton ? (
+                        <Skeleton className="h-full w-full rounded-xl absolute" />
+                      ) : (
+                        <div
+                          style={{ backgroundImage: `url(${images?.top}) ` }}
+                          className="rounded-2xl h-full bg-cover bg-no-repeat items-start justify-end flex flex-col"
+                        >
+                          <span className="text-base pl-4 mb-4 text-stone-100">
+                            ALL NEW WATERPROOF COLLECTION
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                    <div className="h-full bg-cover bg-no-repeat items-start justify-end flex flex-col customCard">
+                      {skeleton ? (
+                        <Skeleton className="h-full w-full rounded-xl absolute" />
+                      ) : (
+                        <div
+                          style={{ backgroundImage: `url(${images?.bottom}) ` }}
+                          className="rounded-2xl h-full bg-cover bg-no-repeat items-start justify-end flex flex-col"
+                        >
+                          <span className="text-base pl-4 mb-4 text-stone-100">
+                            OUR CUSHIEST SLIPPER EVER
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+            {openMenu === "men" && (
+              <div
+                className="flex w-full
+            "
+              >
+                <div className=" w-1/2 flex">
+                  <div className="flex flex-col text-stone-800  mr-16 gap-y-5">
+                    {items?.items1.map((item) =>
+                      skeleton ? (
+                        <Skeleton key={item} className="w-32 h-4 mb-4" />
+                      ) : (
+                        <Link
+                          href={"/"}
+                          key={item}
+                          className="text-base font-medium hover:underline cursor-pointer"
+                        >
+                          {item}
+                        </Link>
+                      )
+                    )}
+                  </div>
+                  <div className="flex flex-col [&>*:first-child]:text-stone-800  mr-16 gap-y-2">
+                    {items?.items2.map((item) =>
+                      skeleton ? (
+                        <Skeleton key={item} className="w-32 h-4 mb-4" />
+                      ) : (
+                        <Link
+                          href={"/"}
+                          key={item}
+                          className="text-stone-400 text-base font-medium hover:underline cursor-pointer"
+                        >
+                          {item}
+                        </Link>
+                      )
+                    )}
+                  </div>
+                  <div className="flex flex-col [&>*:first-child]:text-stone-800 mr-16 gap-y-2">
+                    {items?.items3.map((item) =>
+                      skeleton ? (
+                        <Skeleton key={item} className="w-32 h-4 mb-4" />
+                      ) : (
+                        <Link
+                          href={"/"}
+                          key={item}
+                          className="text-stone-400 text-base font-medium hover:underline cursor-pointer"
+                        >
+                          {item}
+                        </Link>
+                      )
+                    )}
+                  </div>
+                </div>
+                <div className="flex w-1/2 h-80 gap-8 justify-end">
+                  <div className="w-1/3 h-full bg-cover bg-no-repeat items-start justify-end flex flex-col customCard">
+                    {skeleton ? (
+                      <Skeleton className="h-full w-full rounded-xl absolute" />
+                    ) : (
+                      <div
+                        style={{ backgroundImage: `url(${images?.left}) ` }}
+                        className="w-full h-full bg-cover bg-no-repeat items-start justify-end flex flex-col rounded-2xl"
+                      >
+                        <span className="text-base pl-4 mb-4 text-stone-100">
+                          WOOL CRUISER COLLECTION
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="w-1/3 flex gap-2 flex-col">
+                    <div className="h-full bg-cover bg-no-repeat items-start justify-end flex flex-col customCard">
+                      {skeleton ? (
+                        <Skeleton className="h-full w-full rounded-xl absolute" />
+                      ) : (
+                        <div
+                          style={{ backgroundImage: `url(${images?.top}) ` }}
+                          className="rounded-2xl h-full bg-cover bg-no-repeat items-start justify-end flex flex-col"
+                        >
+                          <span className="text-base pl-4 mb-4 text-stone-100">
+                            ALL NEW WATERPROOF COLLECTION
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                    <div className="h-full bg-cover bg-no-repeat items-start justify-end flex flex-col customCard">
+                      {skeleton ? (
+                        <Skeleton className="h-full w-full rounded-xl absolute" />
+                      ) : (
+                        <div
+                          style={{ backgroundImage: `url(${images?.bottom}) ` }}
+                          className="rounded-2xl h-full bg-cover bg-no-repeat items-start justify-end flex flex-col"
+                        >
+                          <span className="text-base pl-4 mb-4 text-stone-100">
+                            OUR CUSHIEST SLIPPER EVER
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </Container>
+        </div>
+
+        {/* down section*/}
+        <div
+          className="h-1/4 w-full flex items-center justify-center text-white font-bold "
+          style={{ backgroundColor: "#00000025" }}
+          // close modal by hover this box
+          onMouseEnter={() => setOpenMenu(null)}
+        ></div>
+      </div>
+      <div
+        className={`fixed top-4 left-0 right-0 z-50 transition-transform duration-500  ${
+          showHeader ? "translate-y-0" : "-translate-y-20"
+        }`}
+      >
+        <Container>
+          <div className="mx-auto flex items-center justify-between rounded-2xl py-2 px-6 bg-white">
+            {/* LOGO */}
+            <div className="w-1/3 flex justify-start">
+              <Link href={"/"}>
+                <Image src={logo?.src} alt="user" width={60} height={60} />
+              </Link>
+            </div>
+
+            {/* MENU BUTTON*/}
+            <div id="nav" className="flex gap-4 w-1/3 justify-center">
+              <Button
+                variant="ghost"
+                className={`relative z-50 hover:bg-stone-100 transition-all duration-350 ${
+                  openMenu == "men" ? "bg-stone-100" : "bg-none"
+                }`}
+                onMouseEnter={() => setOpenMenu("men")}
+              >
+                MEN
+              </Button>
+              <Button
+                variant="ghost"
+                className={`relative z-50 hover:bg-stone-100 transition-all duration-350 ${
+                  openMenu == "women" ? "bg-stone-100" : "bg-none"
+                }`}
+                onMouseEnter={() => setOpenMenu("women")}
+              >
+                WOMEN
+              </Button>
+            </div>
+
+            {/* ICONS*/}
+            <div className="flex gap-4 items-center w-1/3 justify-end">
+              <Link href={"/"} className="text-xs cursor-pointer">
+                About
+              </Link>
+              <span
+                onClick={() => window.location.reload()}
+                className="text-xs cursor-pointer"
+              >
+                ReRun
+              </span>
               <Image
-                src={"/images/search.svg"}
-                alt="logo"
-                width={40}
-                height={40}
-                className="p-2 bg-red-500 rounded-md cursor-pointer"
-              ></Image>
-              <input
-                type="search"
-                className="outline-0 pr-2 w-full"
-                placeholder="جستوجو در مهران کالا..."
+                src="/images/search.svg"
+                alt="search"
+                width={24}
+                height={24}
+                className="cursor-pointer"
+              />
+              <Image
+                src="/images/user.svg"
+                alt="user"
+                width={24}
+                height={24}
+                className="cursor-pointer"
+              />
+              <Image
+                src="/images/help.svg"
+                alt="help"
+                width={24}
+                height={24}
+                className="cursor-pointer"
+              />
+              <Image
+                src="/images/shop.svg"
+                alt="shop"
+                width={24}
+                height={24}
+                className="cursor-pointer"
               />
             </div>
           </div>
-
-          <div className="flex items-center gap-x-2">
-            <div className={personOptionClass}>
-              <div className="flex items-start flex-col p-2">
-                <span className="text-xs font-normal mr-1">کاربری</span>
-                <span className="text-sm font-bold">ورود / ثبت نام</span>
-              </div>
-              <div>
-                <Image
-                  src={"/images/user.svg"}
-                  alt="logo"
-                  width={25}
-                  height={25}
-                ></Image>
-              </div>
-            </div>
-
-            <div className={personOptionClass}>
-              <div className="flex items-start flex-col p-2">
-                <span className="text-xs font-normal mr-1">سبد خرید</span>
-                <span className="text-sm font-bold">خالی است</span>
-              </div>
-              <div>
-                <Image
-                  src={"/images/shop.svg"}
-                  alt="logo"
-                  width={25}
-                  height={25}
-                ></Image>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/*  */}
-        <div className="pt-2">
-          <div>
-            <ul className="flex gap-x-6">
-              <li className={liClass + ` flex items-center gap-x-2 `}>
-                <Image
-                  src={"/images/menu4.svg"}
-                  alt="logo"
-                  width={18}
-                  height={18}
-                  className="ml-2"
-                ></Image>
-                دسته بندی کالاها
-                <Image
-                  src={"/images/arrowdown.svg"}
-                  alt="logo"
-                  width={15}
-                  height={15}
-                  className="mt-1"
-                ></Image>
-              </li>
-              <li className={liClass}>مهران کالای من</li>
-              <li className={liClass}>سوالی دارد؟</li>
-              <li className={liClass}>مهران کالایی شوید</li>
-            </ul>
-          </div>
-        </div>
-      </Container>
-    </div>
+        </Container>
+      </div>
+    </>
   );
 }
+
+// -translate-z-8 rotate-x-50 rotate-z-45 hover:rotate-x-0 hover:rotate-z-0 z-50 transition-all duration-400 cursor-pointer
