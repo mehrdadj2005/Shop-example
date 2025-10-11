@@ -1,20 +1,8 @@
-"use client";
 import { supabase } from "@/lib/supabaseClient";
-import { useEffect, useState } from "react";
 
-export function Api<T>(tableName: string) {
-  const [info, setInfo] = useState<T[]>([]);
+export async function Api(tableName: string) {
+  const { data, error } = await supabase.from(tableName).select("*");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const { data, error } = await supabase.from(tableName).select("*");
-
-      if (error) console.error(error);
-      else if (data) setInfo(data);
-    };
-
-    fetchData();
-  }, [tableName]);
-
-  return info;
+  if (error) console.error(error);
+  return data;
 }
