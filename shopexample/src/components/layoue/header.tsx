@@ -1,20 +1,28 @@
 "use client";
 
+import Container from "@/components/container";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Api } from "@/services/api";
-import { HeaderData } from "@/types/header";
+import { HeaderData } from "@/types/page/layout/header";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import Container from "./container";
-import { Skeleton } from "./ui/skeleton";
 
 export default function Header() {
   const [openMenu, setOpenMenu] = useState<"men" | "women" | null>(null);
   const [showHeader, setShowHeader] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [skeleton, setSkeleton] = useState(true);
-  const info = Api<HeaderData>("header");
+  const [info, setInfo] = useState<HeaderData[]>([]);
+
+  useEffect(() => {
+    async function getApi() {
+      const data = await Api("header");
+      setInfo(data || []);
+    }
+    getApi();
+  }, []);
 
   let items, logo, images;
   if (info[0]) {
@@ -23,11 +31,7 @@ export default function Header() {
     logo = item.logo;
     images = item.images;
   }
-  console.log(items);
-  console.log(logo);
-  console.log(images);
 
-  // 🎯 کنترل نمایش/پنهان شدن هدر هنگام اسکرول
   useEffect(() => {
     const handleScroll = () => {
       setOpenMenu(null);
@@ -45,7 +49,7 @@ export default function Header() {
 
     setTimeout(() => {
       setSkeleton(false);
-    }, 500);
+    }, 700);
   }, [openMenu]);
 
   const isOpen = !!openMenu;
@@ -130,7 +134,7 @@ export default function Header() {
                       </div>
                     )}
                   </div>
-                  <div className="w-1/3 flex gap-2 flex-col">
+                  <div className="w-1/3 flex gap-4 flex-col">
                     <div className="h-full bg-cover bg-no-repeat items-start justify-end flex flex-col customCard">
                       {skeleton ? (
                         <Skeleton className="h-full w-full rounded-xl absolute" />
@@ -279,12 +283,19 @@ export default function Header() {
           showHeader ? "translate-y-0" : "-translate-y-20"
         }`}
       >
-        <Container>
+        <Container className="px-4 lx:px-8 lx:py-0">
           <div className="mx-auto flex items-center justify-between rounded-2xl py-2 px-6 bg-white">
             {/* LOGO */}
             <div className="w-1/3 flex justify-start">
               <Link href={"/"}>
-                <Image src={logo?.src} alt="user" width={60} height={60} />
+                {
+                  <Image
+                    src={logo?.src || ""}
+                    alt="logo"
+                    width={60}
+                    height={60}
+                  />
+                }
               </Link>
             </div>
 
