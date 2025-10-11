@@ -28,7 +28,7 @@ export default async function Hero() {
           </p>
           <DoubleButton
             display="row"
-            mode="light"
+            mode="default"
             className="justify-center items-center gap-4 w-1/3"
           />
         </div>
