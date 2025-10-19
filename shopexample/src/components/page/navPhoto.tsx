@@ -21,10 +21,6 @@ export default function NavPhoto() {
     fetchApi();
   }, []);
 
-  useEffect(() => {
-    console.log(title);
-  }, [title]);
-
   return (
     <Container className="mt-8">
       <div className="flex justify-between gap-2 px-2">
