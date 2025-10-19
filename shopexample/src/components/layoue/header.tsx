@@ -4,7 +4,7 @@ import Container from "@/components/container";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Api } from "@/services/api";
-import { HeaderData } from "@/types/page/layout/header";
+import { HeaderData } from "@/types/layout/header";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
