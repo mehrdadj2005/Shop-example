@@ -5,8 +5,6 @@ import { HeroData } from "@/types/page/hero";
 
 export default async function Hero() {
   const data = await Api("hero");
-  //   const { src } = data[0];
-  //   console.log(src);
   const src: HeroData = await data[0];
 
   return (
@@ -19,11 +17,11 @@ export default async function Hero() {
           loop
           muted
         ></video>
-        <div className="w-1/3 h-1/3  bottom-12 right-0 absolute flex flex-col items-center justify-around">
-          <p className="font-semibold text-white text-lg">
+        <div className="md:w-1/3 h-1/3 md:bottom-12 bottom-4 right-0 w-full absolute flex flex-col items-center justify-around">
+          <p className="md:font-semibold font-extrabold text-popover md:text-white text-lg px-1 rounded-md bg-[#00000075] md:bg-[#00000000]">
             Our first-ever Waterproof Collection
           </p>
-          <p className="font-semibold text-white text-2xl">
+          <p className="md:font-semibold font-extrabold text-popover md:text-white text-2xl px-1 rounded-md bg-[#00000075] md:bg-[#00000000]">
             100% Chance of Comfort
           </p>
           <DoubleButton
