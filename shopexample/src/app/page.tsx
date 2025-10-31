@@ -1,4 +1,4 @@
-import DualImageSlider from "@/components/page/dualImageSlider";
+// import DualImageSlider from "@/components/page/dualImageSlider";
 import Hero from "@/components/page/hero";
 import NavPhoto from "@/components/page/navPhoto";
 
@@ -7,7 +7,8 @@ export default function Home() {
     <>
       <Hero />
       <NavPhoto />
-      <DualImageSlider />
+      {/*  <DualImageSlider /> */}
+      <div className="w-full h-92"></div>
     </>
   );
 }
