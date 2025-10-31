@@ -18,10 +18,10 @@ export default async function Hero() {
           muted
         ></video>
         <div className="md:w-1/3 h-1/3 md:bottom-12 bottom-4 right-0 w-full absolute flex flex-col items-center justify-around">
-          <p className="md:font-semibold font-extrabold text-popover md:text-white text-lg px-1 rounded-md bg-[#00000075] md:bg-[#00000000]">
+          <p className="md:font-semibold font-extrabold text-popover md:text-white text-base md:text-lg px-1 rounded-md bg-[#00000075] md:bg-[#00000000]">
             Our first-ever Waterproof Collection
           </p>
-          <p className="md:font-semibold font-extrabold text-popover md:text-white text-2xl px-1 rounded-md bg-[#00000075] md:bg-[#00000000]">
+          <p className="md:font-semibold font-extrabold text-popover md:text-white text-lg md:text-2xl px-1 rounded-md bg-[#00000075] md:bg-[#00000000]">
             100% Chance of Comfort
           </p>
           <DoubleButton
