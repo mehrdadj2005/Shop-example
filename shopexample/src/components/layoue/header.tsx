@@ -575,7 +575,7 @@ export default function Header() {
       </Sheet>
       <div
         className={`fixed top-2 left-0 right-0 z-40 transition-transform duration-500  ${
-          showHeader ? "translate-y-0" : "-translate-y-20"
+          showHeader ? "translate-y-0" : "-translate-y-30"
         }`}
       >
         <Container className="px-4 py-2 lx:px-8 lx:py-0">
