@@ -55,34 +55,35 @@ export default function DualImageSlider() {
   }, [numSlide]);
 
   return (
-    <Container className="!w-full h-fit max-w-4xl mx-auto !select-none flex justify-around mt-16">
-      <div className="flex flex-col !justify-center !items-center h-[600px]">
+    <Container className="!w-full h-fit max-w-4xl mx-auto !select-none flex flex-col-reverse items-center md:flex-row justify-around mt-16">
+      <div className="relative flex flex-col !justify-center !items-center h-96 xs:h-96 md:w-80 md:h-80 lg:w-[500px] lg:h-[500px] xl:w-[600px] xl:h-[600px]">
+        <h5 className="text-lg font-normal uppercase absolute top-8 md:top-2">
+          Comfort by Nature
+        </h5>
         {data.map(
           (item) =>
             numSlide == item.id && (
               <div
                 key={item.id}
-                className="flex items-center h-full justify-center text-3xl font-bold flex-col gap-y-4 relative"
+                className="relative flex flex-col items-center justify-center h-full text-3xl font-bold gap-y-4"
               >
-                <h5 className="text-lg uppercase font-extralight">
-                  Comfort by Nature
-                </h5>
                 <div
                   style={{ backgroundImage: `url(${bg})` }}
-                  className="bg-no-repeat bg-center bg-contain"
+                  className="bg-no-repeat bg-center bg-contain h-[300px] w-[300px] xs:w-80 xs:h-80 md:w-[250px] md:h-[250px] lg:!w-[400px] lg:!h-[400px] xl:!h-[500px] xl:!w-[500px] flex justify-center items-center"
                 >
                   <Image
                     src={item.images.left}
                     alt={item.title}
                     width={600}
                     height={600}
+                    className="absolute top-0"
                   />
                 </div>
-                <div className="absolute right-0 left-0 bottom-0 flex flex-col items-center gap-4">
-                  <span className="text-xl text-stone-700 font-semibold">
+                <div className="absolute bottom-0 left-0 right-0 flex flex-col items-center gap-4">
+                  <span className="text-xl font-semibold text-stone-700">
                     {item.title}
                   </span>
-                  <p className="text-sm text-stone-700 font-medium">
+                  <p className="text-sm font-medium text-center text-stone-700">
                     {item.description}
                   </p>
                   <DoubleButton
@@ -97,26 +98,24 @@ export default function DualImageSlider() {
             )
         )}
       </div>
-      <div className="relative">
+      <div className="relative w-[300px] h-[300px] xs:w-[450px] xs:h-[450px] lg:w-[500px] lg:h-[500px] md:w-80 md:h-80 xl:w-[600px] xl:h-[600px]">
         <Swiper
           onSlideChange={handleSlideChange}
           allowTouchMove={false}
           simulateTouch={false}
+          pagination={false}
           centeredSlides={true}
           autoplay={{
             delay: 2500,
             disableOnInteraction: false,
           }}
-          pagination={{
-            clickable: true,
-          }}
           modules={[Autoplay, Pagination]}
-          className="mySwiper !w-[600px] !h-[600px] rounded-xl overflow-hidden "
+          className="mySwiper !w-full !h-full rounded-xl overflow-hidden "
         >
           {data.map((item) => (
             <SwiperSlide
               key={item.id}
-              className="flex items-center h-full justify-center text-3xl font-bold"
+              className="flex items-center justify-center h-full text-3xl font-bold"
             >
               <Image
                 src={item.images.right}
@@ -127,12 +126,12 @@ export default function DualImageSlider() {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className="absolute bottom-4 left-0 right-0 w-11/12 h-1 bg-gray-300 overflow-hidden z-50 mx-auto rounded flex">
+        <div className="absolute left-0 right-0 z-50 flex w-11/12 h-1 mx-auto overflow-hidden bg-gray-300 rounded bottom-4">
           {data.map((item) => (
-            <div className="h-full w-1/3" key={item.id}>
+            <div className="w-1/3 h-full" key={item.id}>
               {item.id == numSlide && (
                 <div
-                  className="bg-gray-500 h-full transition-all ease-in-out"
+                  className="h-full transition-all ease-in-out bg-gray-500"
                   style={{ width: `${progress}%` }}
                 ></div>
               )}
