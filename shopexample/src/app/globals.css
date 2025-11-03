@@ -1,10 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-input[type="search"]::-webkit-search-cancel-button {
-  display: none;
-}
-
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -45,6 +41,16 @@ input[type="search"]::-webkit-search-cancel-button {
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  /* CUSTOM */
+  --breakpoint-xs: 514px;
+}
+
+/* @theme {
+  --breakpoint-xs: 514px;
+} */
+
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
 }
 
 :root {
@@ -197,6 +203,10 @@ input[type="search"]::-webkit-search-cancel-button {
   animation: outSliderMobile 0.3s forwards;
 }
 
+.hoverChildSlider:hover>div {
+  border-radius: 250px
+}
+
 @keyframes sliderMobile {
   0% {
     border-radius: 24px
@@ -215,11 +225,6 @@ input[type="search"]::-webkit-search-cancel-button {
   100% {
     border-radius: 24px
   }
-
-}
-
-.hoverChildSlider:hover>div {
-  border-radius: 250px
 }
 
 @layer base {
