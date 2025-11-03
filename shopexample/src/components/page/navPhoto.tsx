@@ -38,7 +38,10 @@ export default function NavPhoto() {
     <Container className="mt-8">
       <div className="hidden justify-between gap-2 px-2 md:flex">
         {items.map((item) => (
-          <div key={item.src} className="hoverChildSlider w-1/4 h-[500px]">
+          <div
+            key={item.src}
+            className="hoverChildSlider w-1/4 h-80 lg:h-[500px]"
+          >
             <div
               style={{ backgroundImage: `url(${item.src})` }}
               className="w-full h-full bg-center bg-cover box-content rounded-3xl transition-all duration-700 flex items-center justify-center flex-col gap-2 "
@@ -95,14 +98,14 @@ export default function NavPhoto() {
       >
         {items.map((item, index) => (
           <SwiperSlide
-            key={Math.random()}
+            key={item.title}
             className={`flex items-center flex-col rounded-3xl ${
               numSlide == index ? "sliderMobile" : "outSliderMobile"
             }`}
           >
             <div
               style={{ backgroundImage: `url(${item.src})` }}
-              className={`w-full h-[450px] rounded-3xl bg-center bg-cover box-content transition-all flex items-center  justify-center flex-col gap-2 ${
+              className={`w-full h-[500px] xs:h-[800px] rounded-3xl bg-center bg-cover box-content transition-all flex items-center  justify-center flex-col gap-2 ${
                 numSlide == index ? "sliderMobile" : "outSliderMobile"
               }`}
             >
