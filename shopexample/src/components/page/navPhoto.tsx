@@ -26,10 +26,6 @@ export default function NavPhoto() {
     fetchApi();
   }, []);
 
-  useEffect(() => {
-    console.log(title);
-  }, [title]);
-
   const handleChangeSlide = (swiper: any) => {
     setNumSlide(swiper.realIndex);
   };
