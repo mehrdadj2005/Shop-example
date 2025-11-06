@@ -1,6 +1,7 @@
 import DualImageSlider from "@/components/page/dualImageSlider";
 import Hero from "@/components/page/hero";
 import NavPhoto from "@/components/page/navPhoto";
+import ShoesSlider from "@/components/page/shoesSlider";
 import WaterproofPhotos from "@/components/page/waterproofPhotos";
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
       <NavPhoto />
       <DualImageSlider />
       <WaterproofPhotos />
+      <ShoesSlider />
       <div className="w-full h-92 bg-blue-200"></div>
     </>
   );
