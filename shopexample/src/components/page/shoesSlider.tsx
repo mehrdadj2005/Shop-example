@@ -64,7 +64,7 @@ export default function ShoesSlider() {
         ref={containerRef}
         onClick={handleClick}
       >
-        <h3 className=" text-2xl font-light uppercase p-4 text-center absolute left-0 right-0 top-8">
+        <h3 className=" text-2xl font-light uppercase p-4 text-center absolute left-0 right-0 md:top-8 z-50">
           other shoes
         </h3>
         <Swiper
@@ -74,7 +74,7 @@ export default function ShoesSlider() {
           slidesPerView={1.5}
           spaceBetween={20}
           onSwiper={(swiper) => (swiperRef.current = swiper)}
-          className="rounded-2xl bg-no-repeat bg-center bg-size-[600px] md:bg-size-[800px] md:!h-[700px]"
+          className="rounded-2xl bg-no-repeat bg-center bg-size-[600px] md:bg-size-[800px] md:!h-[600px] lg:!h-[700px]"
           style={{ backgroundImage: `url(${bg})` }}
         >
           {data.map((item) => (
