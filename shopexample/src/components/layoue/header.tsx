@@ -1,6 +1,5 @@
 "use client";
 
-import Container from "@/components/container";
 import {
   Accordion,
   AccordionContent,
@@ -8,6 +7,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import Container from "@/components/ui/container";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Api } from "@/services/api";
 import { HeaderData } from "@/types/layout/header";

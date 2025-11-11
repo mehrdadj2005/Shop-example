@@ -1,5 +1,5 @@
-import Container from "@/components/container";
-import DoubleButton from "@/components/doubleButton";
+import Container from "@/components/ui/container";
+import DoubleButton from "@/components/ui/doubleButton";
 import { Api } from "@/services/api";
 import { HeroData } from "@/types/page/hero";
 

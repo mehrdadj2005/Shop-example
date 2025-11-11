@@ -1,7 +1,7 @@
 "use client";
 import { ShoesSliderType } from "@/types/page/shoesSliderType";
 
-import Container from "@/components/container";
+import Container from "@/components/ui/container";
 import { Api } from "@/services/api";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -57,14 +57,14 @@ export default function ShoesSlider() {
   };
 
   return (
-    <Container className="px-0 !min-w-full !cursor-none relative w-full mx-auto select-none mt-12">
+    <Container className="px-0 !cursor-none relative w-full mx-auto select-none mt-12">
       <div
         onMouseMove={handleMove}
         onMouseLeave={() => setVisible(false)}
         ref={containerRef}
         onClick={handleClick}
       >
-        <h3 className=" text-2xl font-light uppercase p-4 text-center absolute left-0 right-0 md:top-8 z-50">
+        <h3 className=" text-2xl font-light uppercase p-4 text-center absolute left-0 right-0 md:top-8 z-30">
           other shoes
         </h3>
         <Swiper

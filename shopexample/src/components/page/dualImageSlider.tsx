@@ -1,6 +1,6 @@
 "use client";
 
-import Container from "@/components/container";
+import Container from "@/components/ui/container";
 import { Api } from "@/services/api";
 import { DualImageSliderType } from "@/types/page/dualImageSlider";
 import Image from "next/image";
@@ -9,7 +9,7 @@ import "swiper/css";
 import "swiper/css/scrollbar";
 import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import DoubleButton from "../doubleButton";
+import DoubleButton from "../ui/doubleButton";
 
 export default function DualImageSlider() {
   const [data, setData] = useState<DualImageSliderType[]>([]);

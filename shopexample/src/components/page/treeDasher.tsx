@@ -1,8 +1,8 @@
 import { TreeDasherItems, TreeDasherTitle } from "@/types/page/treeDasherType";
 
-import Container from "@/components/container";
+import Container from "@/components/ui/container";
 import { Api } from "@/services/api";
-import DoubleButton from "../doubleButton";
+import DoubleButton from "../ui/doubleButton";
 
 export default async function TreeDasher() {
   const data = await Api("treeDasher");
@@ -10,7 +10,7 @@ export default async function TreeDasher() {
   const title: TreeDasherTitle = await data[0].title;
 
   return (
-    <Container className="px-4 lg:px-2 flex flex-col gap-8">
+    <Container className="px-4 lg:px-2 flex flex-col gap-8 ">
       <div className="w-full mx-auto">
         {title.map((item) => (
           <div
@@ -33,7 +33,7 @@ export default async function TreeDasher() {
         {items.map((item) => (
           <div
             key={item.id}
-            className="w-full md:w-1/3 h-[600px] md:h-[400px] lg:h-[90vh] bg-center bg-cover rounded-3xl flex justify-center items-center flex-col box-border relative transition-transform duration-500 md:hover:scale-101"
+            className="w-full md:w-1/3 h-[600px] md:h-[400px] lg:h-[90vh] !max-h-[625px] bg-center bg-cover rounded-3xl flex justify-center items-center flex-col box-border relative transition-transform duration-500 md:hover:scale-101"
             style={{ backgroundImage: `url(${item.src})` }}
           >
             <h4 className="text-white text-4xl md:text-2xl lg:text-3xl text-center">
