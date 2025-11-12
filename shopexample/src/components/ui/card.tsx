@@ -12,7 +12,13 @@ export default function ProductCard({
 }) {
   console.log();
   return (
-    <div className="relative group overflow-visible">
+    <div
+      className={`relative group ${
+        variant == "default"
+          ? " hover:scale-101 transition-all duration-200"
+          : ""
+      }`}
+    >
       <div
         className={`
         flex flex-col w-full justify-between rounded-2xl p-4 bg-white relative group ${className} ${
