@@ -9,7 +9,7 @@ export default async function WaterproofPhotos() {
   const { left, right, video }: WaterproofPhotosType = await data[0].items[0];
 
   return (
-    <Container className="px-4 lx:px-8 lx:py-0 mt-16">
+    <Container className="px-4 xl:px-8 xl:py-0 mt-16">
       <h3 className="text-lg font-normal uppercase p-4 text-center">
         MORE ADVENTURE-READY STYLES
       </h3>

@@ -89,7 +89,7 @@ export default function Header() {
       >
         {/* top section*/}
         <div className="h-3/4 w-full flex felx-col items-center justify-center text-3xl font-bold bg-primary text-popover">
-          <Container className=" mt-12 px-4 lx:px-8 lx:py-0">
+          <Container className=" mt-12 px-4 xl:px-8 xl:py-0">
             {openMenu === "women" && (
               <div
                 className="flex w-full
@@ -310,7 +310,7 @@ export default function Header() {
             : "scale-y-0 opacity-0 pointer-events-none"
         }`}
       >
-        <Container className="pt-4 lx:px-8 lx:py-0 h-full w-full flex flex-col items-center justify-start text-3xl font-bold bg-primary text-popover z-50">
+        <Container className="pt-4 xl:px-8 xl:py-0 h-full w-full flex flex-col items-center justify-start text-3xl font-bold bg-primary text-popover z-50">
           {/* LOGO MOBILE */}
           <div className="px-4 w-full ">
             <div className="flex md:hidden justify-between bg-white px-4 py-3 rounded-2xl">
@@ -578,7 +578,7 @@ export default function Header() {
           showHeader ? "translate-y-0" : "-translate-y-30"
         }`}
       >
-        <Container className="px-4 py-2 lx:px-8 lx:py-0">
+        <Container className="px-4 py-2 xl:px-8xlpy-0">
           <div className="mx-auto flex items-center justify-between rounded-2xl rounded-b-none md:rounded-b-2xl py-2 px-4 md:py-2 md:px-6 bg-white">
             {/* LOGO */}
             <div className="w-1/3 justify-start hidden md:flex">

@@ -14,4 +14,4 @@ export default function Container({ children, className }: ContainerProps) {
     </div>
   );
 }
-// px-4 lx:px-8 lx:py-0
+// px-4 xl:px-8 xl:py-0
