@@ -22,7 +22,7 @@ export default async function Footer() {
               <h5 className="text-white text-lg">{items.title}</h5>
               {items.items.map((tit: string) => (
                 <span
-                  className="text-white pl-4 mt-0.5 hover:underline !select-none"
+                  className="text-white pl-4 mt-0.5 cursor-pointer hover:underline !select-none"
                   key={tit}
                 >
                   {tit}
@@ -42,14 +42,17 @@ export default async function Footer() {
                   alt={item}
                   width={50}
                   height={50}
-                  className="hover:bg-white h-fit rounded-full  transition-all duration-300"
+                  className="cursor-pointer hover:bg-white h-fit rounded-full transition-all duration-300"
                 />
               ))}
             </div>
           </div>
           <div className="flex flex-col text-white gap-2 items-center pb-6">
             {bottomItems.map((item) => (
-              <span className="hover:underline !select-none" key={item}>
+              <span
+                className="cursor-pointer hover:underline !select-none"
+                key={item}
+              >
                 {item}
               </span>
             ))}
