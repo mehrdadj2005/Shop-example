@@ -16,7 +16,6 @@ export default function Home() {
       <ShoesSlider />
       <TreeDasher />
       <ProductSlider />
-      <div className="w-full h-92 bg-blue-200"></div>
     </>
   );
 }
