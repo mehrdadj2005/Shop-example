@@ -1,7 +1,6 @@
-import Footer from "@/components/layoue/footer";
-import Header from "@/components/layoue/header";
 import type { Metadata } from "next";
 import "./globals.css";
+import Providers from "./providers";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -9,21 +8,25 @@ import "./globals.css";
 // });
 
 export const metadata: Metadata = {
-  title: "*SHOP*",
-  description: "Shop Example",
+  title: "shoes",
+  description: "Shoes Example",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="icon"
+          href="https://nznequsmxqcgxaxodbxa.supabase.co/storage/v1/object/public/icons/logo.svg"
+        />
+      </head>
       <body className={` antialiased bg-primary !select-none `}>
-        <Header />
-        {children}
-        <Footer />
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

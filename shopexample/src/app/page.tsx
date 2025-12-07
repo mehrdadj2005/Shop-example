@@ -1,3 +1,5 @@
+import Footer from "@/components/layoue/footer";
+import Header from "@/components/layoue/header";
 import DualImageSlider from "@/components/page/dualImageSlider";
 import Hero from "@/components/page/hero";
 import NavPhoto from "@/components/page/navPhoto";
@@ -9,6 +11,7 @@ import WaterproofPhotos from "@/components/page/waterproofPhotos";
 export default function Home() {
   return (
     <>
+      <Header />
       <Hero />
       <NavPhoto />
       <DualImageSlider />
@@ -16,6 +19,7 @@ export default function Home() {
       <ShoesSlider />
       <TreeDasher />
       <ProductSlider />
+      <Footer />
     </>
   );
 }
