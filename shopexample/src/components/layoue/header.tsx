@@ -11,8 +11,10 @@ import Container from "@/components/ui/container";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Api } from "@/services/api";
 import { HeaderData } from "@/types/layout/header";
+import { Icons } from "@/types/ui/icons";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Sheet, SheetContent } from "../ui/sheet";
 
@@ -24,6 +26,8 @@ export default function Header() {
   const [info, setInfo] = useState<HeaderData[]>([]);
   const [openDerawer, setOpenDerawer] = useState<boolean>(false);
   const [icons, setIcons] = useState<Icons>({});
+
+  const router = useRouter();
 
   useEffect(() => {
     async function getApi() {
@@ -314,7 +318,7 @@ export default function Header() {
           {/* LOGO MOBILE */}
           <div className="px-4 w-full ">
             <div className="flex md:hidden justify-between bg-white px-4 py-3 rounded-2xl">
-              <Link href={"/"} className="w-1/3 flex justify-start ">
+              {/* <Link href={"/"} className="w-1/3 flex justify-start ">
                 {
                   <Image
                     src={logo?.src || ""}
@@ -323,7 +327,7 @@ export default function Header() {
                     height={60}
                   />
                 }
-              </Link>
+              </Link> */}
               <span className="w-1/3 flex justify-center text-popover">
                 {openMenu == "men" ? "MEN" : "WOMEN"}
               </span>
@@ -643,28 +647,31 @@ export default function Header() {
                 </span>
               </div>
               <Image
-                src="/images/search.svg"
+                src={icons.search || ""}
                 alt="search"
                 width={24}
                 height={24}
                 className="cursor-pointer"
+                onClick={() => router.push("./search")}
               />
               <Image
-                src="/images/user.svg"
+                src={icons.user || ""}
                 alt="user"
                 width={24}
                 height={24}
                 className="cursor-pointer"
+                onClick={() => router.push("./profile")}
               />
+
               <Image
-                src="/images/help.svg"
+                src={icons.help || ""}
                 alt="help"
                 width={24}
                 height={24}
                 className="cursor-pointer"
               />
               <Image
-                src="/images/shop.svg"
+                src={icons.shop || ""}
                 alt="shop"
                 width={24}
                 height={24}
