@@ -10,10 +10,9 @@ export default function ProductCard({
   className?: string;
   variant?: "hover" | "default";
 }) {
-  console.log();
   return (
     <div
-      className={`relative group ${
+      className={`relative group ${className} ${
         variant == "default"
           ? " hover:scale-101 transition-all duration-200"
           : ""
@@ -21,7 +20,7 @@ export default function ProductCard({
     >
       <div
         className={`
-        flex flex-col w-full justify-between rounded-2xl p-4 bg-white relative group ${className} ${
+        flex flex-col w-full justify-between rounded-2xl p-4 bg-white relative group ${
           variant == "hover"
             ? "group-hover:rounded-b-none group-hover:scale-105"
             : ""
@@ -64,7 +63,7 @@ export default function ProductCard({
           </div>
         </div>
         {/* colors */}
-        <div className="flex gap-1">
+        <div className="flex gap-1 mt-2">
           {item.colors.all.map((item) => (
             <div
               key={item}
