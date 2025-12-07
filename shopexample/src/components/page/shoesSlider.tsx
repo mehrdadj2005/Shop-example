@@ -57,7 +57,7 @@ export default function ShoesSlider() {
   };
 
   return (
-    <Container className="px-0 !cursor-none relative w-full mx-auto select-none mt-12">
+    <Container className="px-0 !cursor-none relative w-full mx-auto select-none mt-12 !max-w-[1550px]">
       <div
         onMouseMove={handleMove}
         onMouseLeave={() => setVisible(false)}
