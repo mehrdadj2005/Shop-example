@@ -13,5 +13,5 @@ export type ProductCardType = {
     limited: string[];
   };
   price: number;
-  discountedPrice: number;
+  discountedPrice?: number;
 };
