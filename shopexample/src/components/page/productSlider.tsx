@@ -6,33 +6,33 @@ import { ProductCardType } from "@/types/ui/productCard";
 import { useEffect, useState } from "react";
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Container from "../ui/container";
 
 export default function ProductSlider() {
   const [data, setdata] = useState<ProductCardType[]>([]);
+
   useEffect(() => {
     async function getData() {
-      const items = await Api("newArrivals");
+      const items = await Api("allProduct");
       if (items) {
-        setdata(await items[0].items);
+        setdata(await items[0].items[0].men);
       }
     }
     getData();
   }, []);
 
   return (
-    <Container className="py-4 !box-border">
+    <div className="py-4 !box-border">
       <Swiper
         slidesPerView={window.innerWidth > 768 ? 4 : 1}
         modules={[Pagination]}
-        className="mySwiper !max-w-full !h-full !px-4 flex !select-none"
+        className="mySwiper !min-w-full !h-full !flex !select-none !px-4 !w-full"
       >
         {data.map((item) => (
-          <SwiperSlide key={item.id} className="!w-full md:!w-1/4 px-1">
-            <ProductCard item={item} />
+          <SwiperSlide key={item.id} className="!w-full px-1 md:!w-1/4">
+            <ProductCard item={item} variant="hover" />
           </SwiperSlide>
         ))}
       </Swiper>
-    </Container>
+    </div>
   );
 }
