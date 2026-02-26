@@ -57,7 +57,7 @@ export default function ShoesSlider() {
   };
 
   return (
-    <Container className="px-0 !cursor-none relative w-full mx-auto select-none mt-12 !max-w-[1550px]">
+    <Container className="px-0 !cursor-none relative !min-w-full mx-auto select-none mt-12">
       <div
         onMouseMove={handleMove}
         onMouseLeave={() => setVisible(false)}
@@ -81,7 +81,7 @@ export default function ShoesSlider() {
             <SwiperSlide key={item.id}>
               <Image
                 src={item.src}
-                alt={`shoe-${item.id}`}
+                alt={`shoes-${item.id}`}
                 className="rounded-2xl object-cover w-full select-none"
                 width={300}
                 height={300}
