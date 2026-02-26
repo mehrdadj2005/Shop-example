@@ -11,6 +11,13 @@ import WaterproofPhotos from "@/components/page/waterproofPhotos";
 export default function Home() {
   return (
     <>
+      {/* <Alert
+        variant="destructive"
+        className="absolute z-50 w-fit right-8 top-20"
+      >
+        <AlertCircleIcon />
+        <AlertTitle>You are not signed in</AlertTitle>
+      </Alert> */}
       <Header />
       <Hero />
       <NavPhoto />
