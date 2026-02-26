@@ -636,15 +636,9 @@ export default function Header() {
             {/* ICONS*/}
             <div className="gap-4 items-center w-1/3 justify-end flex">
               <div className="hidden gap-4 md:flex">
-                <Link href={"/"} className="text-xs cursor-pointer">
+                <Link href={"/about"} className="text-xs cursor-pointer">
                   About
                 </Link>
-                <span
-                  onClick={() => window.location.reload()}
-                  className="text-xs cursor-pointer"
-                >
-                  ReRun
-                </span>
               </div>
               <Image
                 src={icons.search || ""}
@@ -683,7 +677,7 @@ export default function Header() {
           {/* MENU BOTTOM */}
           <div className="flex md:hidden bg-popover justify-around p-0.5 rounded-b-2xl ">
             <Link
-              href="./"
+              href="/about"
               className="border-primary border-r-3 w-full h-full text-center text-stone-700 font-semibold"
             >
               <span>ABOUT</span>
@@ -695,16 +689,10 @@ export default function Header() {
               MEN
             </span>
             <span
-              className="border-primary border-r-3 w-full h-full text-center text-stone-700 font-semibold"
+              className="w-full h-full text-center text-stone-700 font-semibold"
               onClick={() => setOpenMenu("women")}
             >
               WOMEN
-            </span>
-            <span
-              onClick={() => window.location.reload()}
-              className="w-full h-full text-center text-stone-700 font-semibold"
-            >
-              RERUN
             </span>
           </div>
         </Container>
