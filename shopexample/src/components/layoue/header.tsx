@@ -663,13 +663,7 @@ export default function Header() {
                 width={24}
                 height={24}
                 className="cursor-pointer"
-              />
-              <Image
-                src={icons.shop || ""}
-                alt="shop"
-                width={24}
-                height={24}
-                className="cursor-pointer"
+                onClick={() => router.push("./help")}
               />
             </div>
           </div>
